@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI KSB Reviewer</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    textarea { width: 100%; height: 200px; }
+    #feedback { border: 1px solid #ccc; padding: 1em; margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h1>AI-Powered KSB Reviewer</h1>
+  <label>Standard:
+    <select id="standard">
+      <option value="L4DA">Level 4 Data Analyst</option>
+    </select>
+  </label>
+  <label>Evidence:
+    <select id="evidence">
+      <option value="1">Evidence 1</option>
+      <option value="2">Evidence 2</option>
+    </select>
+  </label>
+  <textarea id="text" placeholder="Paste your evidence here"></textarea>
+  <button id="run">Run AI Review</button>
+  <div id="feedback"></div>
+  <script>
+    document.getElementById('run').addEventListener('click', async () => {
+      const standard = document.getElementById('standard').value;
+      const evidence = parseInt(document.getElementById('evidence').value, 10);
+      const text = document.getElementById('text').value;
+      const res = await fetch('/review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ standard, evidence, text })
+      });
+      const data = await res.json();
+      const container = document.getElementById('feedback');
+      container.innerHTML = '<h2>Feedback</h2>' + data.map(item => {
+        return `<p><strong>${item.ksb}</strong>: ${item.suggestion}</p>`;
+      }).join('');
+    });
+  </script>
+</body>
+</html>
