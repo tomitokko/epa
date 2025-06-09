@@ -1,0 +1,22 @@
+{
+  "L4DA": {
+    "ksbs": {
+      "Skill S1": {
+        "pass": "use data sources correctly",
+        "distinction": "use multiple data sources to provide insights"
+      },
+      "Skill S2": {
+        "pass": "analyse data",
+        "distinction": "analyse data comprehensively with visualization"
+      },
+      "Skill S3": {
+        "pass": "communicate results",
+        "distinction": "communicate results to technical and non technical audiences"
+      }
+    },
+    "evidence": {
+      "1": ["Skill S1", "Skill S2"],
+      "2": ["Skill S2", "Skill S3"]
+    }
+  }
+}
