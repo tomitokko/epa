@@ -6,19 +6,19 @@ Knowledge, Skills and Behaviours (KSBs) required by their standard.
 
 ## Structure
 
-- `backend/` – FastAPI service with a `/review` endpoint
+- `backend/` – Django project exposing a `/review` endpoint
 - `data/standards.json` – example apprenticeship standard and KSB rubric
 - `frontend/` – very small web page to interact with the API
 
 ## Running locally
 
-1. Install dependencies (FastAPI and Uvicorn):
+1. Install dependencies (Django):
    ```bash
-   pip install fastapi uvicorn pydantic
+   pip install django
    ```
 2. Start the API server from the `backend` directory:
    ```bash
-   uvicorn main:app --reload
+   python manage.py runserver 8000
    ```
 3. Open `frontend/index.html` in your browser and run a review.
 
